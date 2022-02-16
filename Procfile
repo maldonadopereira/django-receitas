@@ -1,0 +1,1 @@
+web: gunicorn djangoreceitas.wsgi --log-file -

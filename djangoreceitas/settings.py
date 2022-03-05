@@ -41,7 +41,6 @@ INSTALLED_APPS = [
 
     # apps locais
     'receitas',
-    'pessoas',
 ]
 
 MIDDLEWARE = [

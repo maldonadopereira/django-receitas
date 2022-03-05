@@ -91,9 +91,9 @@ def cria_receita(request):
     else:
         return render(request, 'cria_receita.html')
 
-def apaga_receita(request):
-    if request.method == 'POST':
-        Receita.object.delete()
+def apaga_receita(request, receita_id):
+    receita = get_object_or_404(Receita, pk=receita_id)
+    receita.delete()
     return redirect('dashboard')
 
 def campo_vazio(campo):

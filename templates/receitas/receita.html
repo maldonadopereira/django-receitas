@@ -4,27 +4,27 @@
 {% include 'partials/_menu.html' %}
 {% include 'partials/_busca.html' %}
 
-        <!--<div class="receipe-post-search mb-80">
-            <div class="container">
-                <form action="#" method="post">
-                    <div class="row">
-                        <div class="col-12 col-lg-5">
-                            <select name="select1" id="select1">
-                                <option value="1">Comida típica brasileira</option>
-                                <option value="1">Massas</option>
-                                <option value="1">Veganas</option>
-                            </select>
-                        </div>
-                        <div class="col-12 col-lg-2 text-right">
-                            <button type="submit" class="btn delicious-btn">Buscar</button>
-                        </div>
+    <!--<div class="receipe-post-search mb-80">
+        <div class="container">
+            <form action="#" method="post">
+                <div class="row">
+                    <div class="col-12 col-lg-5">
+                        <select name="select1" id="select1">
+                            <option value="1">Comida típica brasileira</option>
+                            <option value="1">Massas</option>
+                            <option value="1">Veganas</option>
+                        </select>
                     </div>
-                </form>
-            </div>
-        </div>  --->
+                    <div class="col-12 col-lg-2 text-right">
+                        <button type="submit" class="btn delicious-btn">Buscar</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>  --->
 
         <!-- Receipe Slider -->
-        <div class="container">
+    <div class="container">
             <div class="row">
                 <div class="col-12">
                     <div class="receipe-slider owl-carousel">
@@ -33,12 +33,12 @@
                         {% else %}
                             <img src="{{ receita.foto_receita.url }}" alt="">
                          {% endif %}
-                        <div class="receipe-content">
+
                     </div>
                 </div>
             </div>
         </div>
-        
+    <div class="receipe-content">
         <!-- Receipe Content Area -->
         <div class="receipe-content-area">
             <div class="container">
@@ -48,11 +48,12 @@
                         <div class="receipe-headline my-5">
                             <span>{{ receita.date_receita}}</span>
                             <h2>{{ receita.nome_receita }}</h2>
-                            <span>Por: {{ receita.pessoa}}</span>
+                            <span>Criado por: {{ receita.pessoa | capfirst}}</span>
                             <div class="receipe-duration">
                                 <h6>Tempo de Preparo: {{ receita.tempo_preparo }} minutos</h6>
                                 <h6>Rendimento: {{  receita.rendimento }} porções</h6>
                                 <h6>Categoria: {{ receita.categoria }}</h6>
+
                             </div>
                         </div>
                     </div>
@@ -77,12 +78,16 @@
                             <h5>Modo de Preparo</h5>
                             <div class="single-preparation-step d-flex">
                                 <p>{{ receita.modo_preparo }}</p>
+                            </div>
                         </div>
                     </div>
                 </div>
+
                 </div>
 
-
+            </div>
+        </div>
+    </div>
 {% include 'partials/_footer.html' %}
 
 {% endblock %}

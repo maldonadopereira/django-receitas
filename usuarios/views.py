@@ -37,7 +37,9 @@ def cadastro(request):
         return redirect('login')
     else:
 
-        return render(request, 'cadastro.html')
+        return render(request, 'usuarios/cadastro.html')
+
+
 def login(request):
     if request.method == 'POST':
         email = request.POST['email']
@@ -54,7 +56,9 @@ def login(request):
                 auth.login(request, user)
                 print(f'Olá, {nome} você logou com sucesso!!')
                 return redirect('dashboard')
-    return render(request, 'login.html')
+    return render(request, 'usuarios/login.html')
+
+
 #@login_required
 def dashboard(request):
     if request.user.is_authenticated:
@@ -63,40 +67,20 @@ def dashboard(request):
             dados = {
                 'receitas': receitas
             }
-            return render(request, 'dashboard.html', dados)
+            return render(request, 'usuarios/dashboard.html', dados)
 
     else:
-        return redirect('index.html')
+        return redirect('usuarios/index.html')
+
+
 def logout(request):
     auth.logout(request)
     return redirect('index')
-@login_required
-def cria_receita(request):
-    if request.method == 'POST':
-        nome_receita = request.POST['nome_receita']
-        ingredientes = request.POST['ingredientes']
-        modo_preparo = request.POST['ingredientes']
-        tempo_preparo = request.POST['tempo_preparo']
-        rendimento = request.POST['rendimento']
-        categoria = request.POST['categoria']
-        foto_receita = request.FILES['foto_receita']
-        publicar = 'publicar' in request.POST
-        user = get_object_or_404(User, pk=request.user.id)
-        receita = Receita.objects.create(pessoa = user, nome_receita=nome_receita, ingredientes=ingredientes,
-                                         modo_preparo=modo_preparo, tempo_preparo=tempo_preparo,
-                                         rendimento=rendimento, categoria=categoria,
-                                         foto_receita=foto_receita, publicar=publicar)
-        receita.save()
-        return redirect('dashboard')
-    else:
-        return render(request, 'cria_receita.html')
 
-def apaga_receita(request):
-    if request.method == 'POST':
-        Receita.object.delete()
-    return redirect('dashboard')
 
 def campo_vazio(campo):
     return not campo.strip()
+
+
 def senhas_diferentes(password, password2):
     return password != password2

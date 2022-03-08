@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-dv2_u8q3-3n7h-ngua9dy7(xbzf!5@%!%uv2_c5r%hrgygvb8j'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
+    'whitenoise.runserver_nostatic',
     # apps locais
     'receitas',
 
@@ -52,6 +52,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'djangoreceitas.urls'
@@ -81,10 +82,10 @@ WSGI_APPLICATION = 'djangoreceitas.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'djangoreceitas',
-        'USER': 'postgres',
-        'PASSWORD': '3284',
-        'HOST': 'localhost',
+        'NAME': 'dclj190qr36k7q',
+        'USER': 'lxcwlfjpzbwbby',
+        'PASSWORD': '756462e3cb59023a277538370d370da14d89580fb717c8b8bfeec6f4459da0c8',
+        'HOST': 'ec2-35-170-7-252.compute-1.amazonaws.com',
         'PORT': '5432',
     }
 }
